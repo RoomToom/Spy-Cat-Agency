@@ -1,0 +1,63 @@
+{
+  "info": {
+    "name": "Spy Cat Agency API",
+    "_postman_id": "00000000-0000-0000-0000-000000000000",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List Cats",
+      "request": {
+        "method": "GET",
+        "url": "{{BASE}}/api/v1/cats"
+      }
+    },
+    {
+      "name": "Create Cat",
+      "request": {
+        "method": "POST",
+        "url": "{{BASE}}/api/v1/cats",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Tom\", \"years_experience\": 3, \"breed\": \"Abyssinian\", \"salary\": 1000}"
+        }
+      }
+    },
+    {
+      "name": "List Missions",
+      "request": {
+        "method": "GET",
+        "url": "{{BASE}}/api/v1/missions"
+      }
+    },
+    {
+      "name": "Create Mission",
+      "request": {
+        "method": "POST",
+        "url": "{{BASE}}/api/v1/missions",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"targets\": [{\"name\": \"Mouse\", \"country\": \"US\"}]}"
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE",
+      "value": "http://localhost:8000"
+    }
+  ]
+}

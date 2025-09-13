@@ -10,10 +10,10 @@ router = APIRouter(prefix="/targets", tags=["targets"])
 
 @router.patch("/{target_id}/notes")
 def update_notes(target_id: int, payload: TargetNotesUpdate, db: Session = Depends(get_db_dep)):
-    target = db.query(Target).get(target_id)
+    target = db.get(Target, target_id)
     if not target:
         raise HTTPException(status_code=404, detail="Target not found")
-    mission = db.query(Mission).get(target.mission_id)
+    mission = db.get(Mission, target.mission_id)
     freeze_guard(target, mission)
     target.notes = payload.notes
     db.add(target); db.commit()
@@ -21,10 +21,10 @@ def update_notes(target_id: int, payload: TargetNotesUpdate, db: Session = Depen
 
 @router.patch("/{target_id}/complete")
 def complete_target(target_id: int, db: Session = Depends(get_db_dep)):
-    target = db.query(Target).get(target_id)
+    target = db.get(Target, target_id)
     if not target:
         raise HTTPException(status_code=404, detail="Target not found")
-    mission = db.query(Mission).get(target.mission_id)
+    mission = db.get(Mission, target.mission_id)
     target.is_complete = True
     db.add(target); db.commit()
     maybe_complete_mission(db, mission)

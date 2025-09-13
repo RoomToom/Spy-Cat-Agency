@@ -1,12 +1,10 @@
 from fastapi import FastAPI
-from .api.routers.cats import router as cats_router
-from .api.routers.missions import router as missions_router
-from .api.routers.targets import router as targets_router
-from .core.config import settings
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.routers import cats, missions, targets
 
-app = FastAPI(title="Spy Cat Agency API")
+app = FastAPI(title="Spy Cat Agency API", version="1.0.0")
 
+# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
@@ -15,7 +13,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-app.include_router(cats_router, prefix=settings.API_V1_STR)
-app.include_router(missions_router, prefix=settings.API_V1_STR)
-app.include_router(targets_router, prefix=settings.API_V1_STR)
+# Routers
+app.include_router(cats.router, prefix="/api/v1")
+app.include_router(missions.router, prefix="/api/v1")
+app.include_router(targets.router, prefix="/api/v1")

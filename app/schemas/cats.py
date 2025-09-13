@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, conint, confloat
+from pydantic import BaseModel, Field, conint, confloat, ConfigDict
 
 class CatCreate(BaseModel):
     name: str = Field(min_length=1, max_length=100)
@@ -13,8 +13,7 @@ class CatOut(BaseModel):
     breed: str
     salary: float
     current_mission_id: int | None
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class CatUpdateSalary(BaseModel):
     salary: confloat(ge=0)

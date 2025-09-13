@@ -30,14 +30,14 @@ def list_cats(db: Session = Depends(get_db_dep)):
 
 @router.get("/{cat_id}", response_model=CatOut)
 def get_cat(cat_id: int, db: Session = Depends(get_db_dep)):
-    cat = db.query(Cat).get(cat_id)
+    cat = db.get(Cat, cat_id)
     if not cat:
         raise HTTPException(status_code=404, detail="Cat not found")
     return cat
 
 @router.patch("/{cat_id}", response_model=CatOut)
 def update_salary(cat_id: int, payload: CatUpdateSalary, db: Session = Depends(get_db_dep)):
-    cat = db.query(Cat).get(cat_id)
+    cat = db.get(Cat, cat_id)
     if not cat:
         raise HTTPException(status_code=404, detail="Cat not found")
     cat.salary = float(payload.salary)
@@ -46,7 +46,7 @@ def update_salary(cat_id: int, payload: CatUpdateSalary, db: Session = Depends(g
 
 @router.delete("/{cat_id}", status_code=204)
 def delete_cat(cat_id: int, db: Session = Depends(get_db_dep)):
-    cat = db.query(Cat).get(cat_id)
+    cat = db.get(Cat, cat_id)
     if not cat:
         raise HTTPException(status_code=404, detail="Cat not found")
     db.delete(cat); db.commit()

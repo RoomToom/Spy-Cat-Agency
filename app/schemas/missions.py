@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional
 
 class TargetIn(BaseModel):
@@ -16,13 +16,11 @@ class TargetOut(BaseModel):
     country: str
     notes: str | None
     is_complete: bool
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class MissionOut(BaseModel):
     id: int
     assigned_cat_id: int | None
     is_complete: bool
     targets: list[TargetOut]
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

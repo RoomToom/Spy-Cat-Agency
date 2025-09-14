@@ -171,13 +171,6 @@ curl -X POST "$BASE/api/v1/cats" \
   -H "Content-Type: application/json" \
   -d '{ "name":"Tom","years_experience":3,"breed":"Abyssinian","salary":1000 }'
 ```
-
-## 📸 Screenshots
-
-### Dark Mode
-
-### Light Mode
-
 -----
 
 ## ✉️ Notes

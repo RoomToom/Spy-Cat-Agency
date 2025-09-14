@@ -1,9 +1,9 @@
 # 🐱 Spy Cat Agency — Fullstack Application
 
 
-# 🐱 This is BE part
+# Only FE part -> https://github.com/RoomToom/sca-frontend
 
-# 🐱 Link to FE
+# Only BE part -> https://github.com/RoomToom/sca-backend
 
 A fullstack CRUD application for the **Spy Cat Agency (SCA)**. The project demonstrates backend development with **FastAPI** and a frontend dashboard built with **Next.js + TailwindCSS**.
 
@@ -116,16 +116,6 @@ Import `postman_collection.json` into Postman.
 Run the collection — all tests (cats, missions, targets, validations) should pass.
 
 -----
-
-## 🐳 Docker
-
-### Combined (backend + frontend)
-
-`docker-compose.yml` orchestrates both services:
-
-```bash
-docker compose up --build
-```
 
 Backend → http://localhost:8000
 Frontend → http://localhost:3000

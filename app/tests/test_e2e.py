@@ -22,6 +22,7 @@ def test_create_cat_and_mission_and_freeze_notes(client):
     assert mission["assigned_cat_id"] == cat_id
     assert len(mission["targets"]) == 1
     target_id = mission["targets"][0]["id"]
+    mission_id = mission["id"]
 
     # оновлюємо нотатки ДО complete (має бути 200)
     r = client.patch(f"/api/v1/targets/{target_id}/notes", json={"notes": "updated"})
@@ -31,9 +32,15 @@ def test_create_cat_and_mission_and_freeze_notes(client):
     r = client.patch(f"/api/v1/targets/{target_id}/complete")
     assert r.status_code == 200, r.text
 
+    # перевіряємо що місія стала complete
+    r = client.get(f"/api/v1/missions/{mission_id}")
+    assert r.status_code == 200, r.text
+    assert r.json()["is_complete"] is True
+
     # пробуємо ще раз оновити нотатки — тепер має бути 400 (заморожені)
     r = client.patch(f"/api/v1/targets/{target_id}/notes", json={"notes": "should fail"})
     assert r.status_code == 400, r.text
+
 
 def test_cannot_delete_assigned_mission(client):
     # кіт

@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base reset & typography */
+* { @apply box-border; }
+html, body { @apply h-full; }
+body {
+  @apply m-0 bg-ink-50 text-ink-900 selection:bg-agent-500/30;
+}
+.dark body {
+  @apply bg-ink-900 text-ink-100;
+}
+
+/* Card & button primitives */
+.card {
+  @apply rounded-2xl border border-ink-200 bg-white shadow-soft dark:bg-ink-800 dark:border-ink-700;
+}
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium transition;
+}
+.btn-primary {
+  @apply btn bg-black text-white hover:bg-ink-700 dark:bg-agent-500 dark:text-ink-900 dark:hover:bg-agent-500/90;
+}
+.btn-ghost {
+  @apply btn border border-ink-200 hover:bg-ink-100 dark:border-ink-700 dark:hover:bg-ink-700;
+}
+.input {
+  @apply w-full rounded-lg border border-ink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-agent-500 dark:bg-ink-900 dark:border-ink-700;
+}
+.table-head {
+  @apply bg-ink-100 text-ink-700 dark:bg-ink-800 dark:text-ink-300;
+}
+.table-row {
+  @apply border-t border-ink-200 dark:border-ink-700;
+}
+
+/* Fancy page container */
+.container-page {
+  @apply max-w-6xl mx-auto p-6 md:p-8;
+}
+
+/* Subtle header gradient */
+.header-grad {
+  background: radial-gradient(1200px 400px at 20% -10%, rgba(0,229,168,.18), transparent),
+              radial-gradient(800px 300px at 90% -10%, rgba(0,229,168,.12), transparent);
+}

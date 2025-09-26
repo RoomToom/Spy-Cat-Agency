@@ -163,6 +163,15 @@ Create missions **with targets (1–3)** in one request. A cat can have **only o
 
 ---
 
+## 📸 Screenshots
+
+### Dark Mode
+![Dark Mode](./docs/screenshot-black.png)
+
+### Light Mode
+![Light Mode](./docs/screenshot-light.png)
+
+
 ### 🔁 Typical flows
 
 **Create a cat**
